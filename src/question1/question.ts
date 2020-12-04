@@ -1,17 +1,24 @@
-// https://adventofcode.com/2020/day/1
+const partA = async (input: number[], sumGoal: number = 2020) => {
+  const inputDictionary: { [key: number]: number[] } = {}
 
-import fs from 'fs'
+  input.forEach((item, index) => {
+    if (inputDictionary.hasOwnProperty(item))
+      inputDictionary[item].push(index)
+    else
+      inputDictionary[item] = [index]
+  })
 
-const partA = async (input: number[]) => {
-  for (let firstIndex = 0; firstIndex < input.length; firstIndex++) {
-    for (let secondIndex = firstIndex + 1; secondIndex < input.length; secondIndex++) {
-      const firstNumber = input[firstIndex]
-      const secondNumber = input[secondIndex]
-      if (firstNumber + secondNumber != 2020)
-        continue
+  for (let item of input) {
+    if (!inputDictionary.hasOwnProperty(sumGoal-item))
+      continue
       
-      return firstNumber * secondNumber
-    }
+    const isSameInputNumber = (number: number) => {
+      return item == sumGoal / 2 && inputDictionary[number].length == 1
+    }  
+    if (isSameInputNumber(item))
+      continue
+    
+    return item * (sumGoal-item)
   }
 
   return null
@@ -19,17 +26,11 @@ const partA = async (input: number[]) => {
 
 const partB = async (input: number[]) => {
   for (let firstIndex = 0; firstIndex < input.length; firstIndex++) {
-    for (let secondIndex = firstIndex + 1; secondIndex < input.length; secondIndex++) {
-      for (let thirdIndex = secondIndex + 1; thirdIndex < input.length; thirdIndex++) {
-        const firstNumber = input[firstIndex]
-        const secondNumber = input[secondIndex]
-        const thirdNumber = input[thirdIndex]
-        if (firstNumber + secondNumber + thirdNumber != 2020)
-          continue
-        
-        return firstNumber * secondNumber * thirdNumber
-      }
-    }
+    const subResult = await partA(input, 2020-input[firstIndex])
+    if (!subResult)
+      continue
+    
+    return subResult * input[firstIndex]
   }
 
   return null
