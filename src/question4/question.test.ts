@@ -33,32 +33,4 @@ describe('Question 4', () => {
     const input = await testHelper.getInputStrings(4, "input")
     expect(await question.partB(input)).to.equal(161)
   })
-
-  it('byr', () => {
-    expect(question.byrValid('2002')).to.equal(true)
-    expect(question.byrValid('2003')).to.equal(false)
-  })
-
-  it('hgt', () => {
-    expect(question.hgtValid('60in')).to.equal(true)
-    expect(question.hgtValid('190cm')).to.equal(true)
-    expect(question.hgtValid('190in')).to.equal(false)
-    expect(question.hgtValid('190')).to.equal(false)
-  })
-
-  it('hcl', () => {
-    expect(question.hclValid('#123abc')).to.equal(true)
-    expect(question.hclValid('#123abz')).to.equal(false)
-    expect(question.hclValid('123abc')).to.equal(false)
-  })
-
-  it('ecl', () => {
-    expect(question.eclValid('brn')).to.equal(true)
-    expect(question.eclValid('wat')).to.equal(false)
-  })
-
-  it('pid', () => {
-    expect(question.pidValid('000000001')).to.equal(true)
-    expect(question.pidValid('0123456789')).to.equal(false)
-  })
 })
