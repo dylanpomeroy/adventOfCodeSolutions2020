@@ -1,3 +1,5 @@
+import { multiplyItems } from "../helpers"
+
 const runWithIncrements = (input: string[], horizontalIncrement: number, verticalIncrement: number) => {
   const inputMap = input.map(line => line.split(''))
   
@@ -28,9 +30,11 @@ const partB = async (input: string[]) => {
     [7, 1],
     [1, 2],
   ]
-  return incrementsToRun
+  
+  const treeCounts = incrementsToRun
     .map(increment => runWithIncrements(input, increment[0], increment[1]))
-    .reduce((a, b) => a * b)
+
+  return multiplyItems(treeCounts)
 }
 
 export default {
