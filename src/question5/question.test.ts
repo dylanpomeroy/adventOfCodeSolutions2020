@@ -2,7 +2,7 @@ import question from './question'
 import { expect } from 'chai'
 import { getInputStrings } from '../helpers'
 
-describe('Question 4', () => {
+describe('Question 5', () => {
   it('part A seat ID -1', async () => {
     const input = 'FBFBBFFRLR'
     expect(question.getSeatId(input)).to.equal(357)
