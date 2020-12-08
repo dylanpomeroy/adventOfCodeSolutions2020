@@ -90,7 +90,6 @@ const partB = async (input: string[]) => {
   const addBagsHoldingToBagCount = (type: string, multiplier: number) => {
     totalBagCount += multiplier
 
-    if (!(type in bagsDict)) return
     bagsDict[type].holds?.forEach(bagGroup => {
       if (!isNaN(bagGroup.amount))
         addBagsHoldingToBagCount(bagGroup.bag.type, multiplier * bagGroup.amount)
