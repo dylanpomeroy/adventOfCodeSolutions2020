@@ -12,6 +12,11 @@ export const getInputStrings = async (questionNum: number, filename: string) => 
   return inputFileContent.split("\n")
 }
 
+export const getInputGrid = async (questionNum: number, filename: string) => {
+  return (await getInputStrings(questionNum, filename))
+    .map(line => line.split(''))
+}
+
 export const sumItems = (items: any[]) => {
   return items.reduce((a, b) => a + b)
 }
