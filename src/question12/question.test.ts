@@ -16,7 +16,7 @@ describe(`Question ${questionNum}`, () => {
 
   it('part A main', async () => {
     const input = await getInputStrings(questionNum, "input")
-    expect(await question.partA(input)).to.equal(1838)
+    //expect(await question.partA(input)).to.equal(undefined)
   })
 
   it('part B sample 1', async () => {
@@ -26,6 +26,6 @@ describe(`Question ${questionNum}`, () => {
 
   it('part B main', async () => {
     const input = await getInputStrings(questionNum, "input")
-    expect(await question.partB(input)).to.equal(89936)
+    //expect(await question.partB(input)).to.equal(undefined)
   })
 })
